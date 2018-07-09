@@ -1,7 +1,24 @@
 var move = 'x'
+var row = document.getElementById('table1').rows;
 var row1 = document.getElementById('table1').rows[0].cells;
 var row2 = document.getElementById('table1').rows[1].cells;
 var row3 = document.getElementById('table1').rows[2].cells;
+var columns = [[],[],[]];
+
+for(var i = 0; i < 3; i++){
+  for(var j = 0; j < 3; j++){
+    columns[i].push(row[j].cells[i]);
+  }
+};
+
+
+var board = [];
+for(var i = 0; i < row.lenght; i++){
+  for(var j = 0; j < row.lenght; j++){
+    board
+  }
+  
+}
 
 var result = document.getElementById('result');
 
@@ -9,12 +26,13 @@ function changeText(id){
   if(id.innerText === ""){
     
     id.innerHTML = move;
-   
+    
     if(move === 'x'){
       move = 'o';
       checkRows();
       checkMajorDiagonal();
       checkMinorDiagonal();
+      checkColumns();
       return;
     }
     
@@ -23,6 +41,7 @@ function changeText(id){
       checkRows();
       checkMajorDiagonal();
       checkMinorDiagonal();
+      checkColumns();
       return;
     }
     
@@ -46,14 +65,15 @@ function checkRows(){
   for(var i = 0; i < rows.length; i++){
     
     if(Array.prototype.every.call(rows[i], isInnerTextX)){
-      result.innerHTML+= "x wins";
-      //refresh page or not more clicks
-      return;
+      alert("x wins");
+      location.reload();
+      
     }
     
     if(Array.prototype.every.call(rows[i], isInnerTextO)){
-      result.innerHTML += "o wins";
-      return;
+      alert("o wins");
+      location.reload();
+      
     }
   }
   
@@ -61,29 +81,75 @@ function checkRows(){
 
 function checkMajorDiagonal(){
   if( isInnerTextO(row1[0]) && isInnerTextO(row2[1]) && isInnerTextO(row3[2]) ){
-   result.innerHTML += "o wins";
-   return;
-  }
-  
-  if( isInnerTextX(row1[0]) && isInnerTextX(row2[1]) && isInnerTextX(row3[2]) ){
-   result.innerHTML+= "x wins";
-   return;
-  }
-  
+   alert("o wins");
+   location.reload();
+   
+ }
+ 
+ if( isInnerTextX(row1[0]) && isInnerTextX(row2[1]) && isInnerTextX(row3[2]) ){
+   alert("x wins");
+   location.reload();
+ }
+ 
 }
 
 function checkMinorDiagonal(){
-   if( isInnerTextO(row1[2]) && isInnerTextO(row2[1]) && isInnerTextO(row3[0]) ){
-    result.innerHTML += "o wins";
-    return;
+  if( isInnerTextO(row1[2]) && isInnerTextO(row2[1]) && isInnerTextO(row3[0]) ){
+    alert("o wins");
+    location.reload();
+  
+  }
+
+  if( isInnerTextX(row1[2]) && isInnerTextX(row2[1]) && isInnerTextX(row3[0]) ){
+    alert("x wins");
+    location.reload();
+  }
+
+}
+
+function checkColumns(){
+  for(var i = 0; i < 3; i++){
+    if(Array.prototype.every.call(columns[i], isInnerTextX ) ) {
+      alert("x wins");
+      location.reload();
+    }
   }
   
-  if( isInnerTextX(row1[2]) && isInnerTextX(row2[1]) && isInnerTextX(row3[0]) ){
-    result.innerHTML+= "x wins";
-    return;
+  for(var i = 0; i < 3; i++){
+    if(Array.prototype.every.call(columns[i], isInnerTextO ) ) {
+      alert("y wins");
+      location.reload();
+    }
   }
+  
   
 }
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
