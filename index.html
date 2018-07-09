@@ -2,17 +2,11 @@
 <html>
 <head>
   <title>tictactoe</title>
-  <style type="text/css">
+  <link rel = "stylesheet" type = "text/css" href ="style.css"></link>
   
-  td {
-        border: 1px solid black;
-        width:150px;
-        height: 150px
-    }
-    
-  </style>
 </head>
 <body>
+  <h1>Tic Tac Toe</h1>
   <table id = "table1">
     <tr>
       <td onclick="changeText(this)"></td>
@@ -31,9 +25,20 @@
     </tr>
   </table>
   
-  <a href = "index.html">Refresh</a>
-  <div id = "result"></div>
+  <button onclick="clearBoard()">Refresh</button>
+  <div id = "result">
+    <hr>
+    <h1>SCOREBOARD</h1>
+    <div id ="xScore">
+      x: 
+    </div>
+    <div id ="oScore">
+      o: 
+    </div>
+  </div>
 
   <script src = "app.js"></script>
+  <!-- <script src = "refactorApp.js"></script> -->
+
 </body>
 </html>
