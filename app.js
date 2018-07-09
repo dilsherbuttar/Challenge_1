@@ -1,9 +1,14 @@
 var move = 'x'
 var row = document.getElementById('table1').rows;
-var row1 = document.getElementById('table1').rows[0].cells;
-var row2 = document.getElementById('table1').rows[1].cells;
-var row3 = document.getElementById('table1').rows[2].cells;
+
+var board = [[],[],[]];
 var columns = [[],[],[]];
+
+for(var i = 0; i < 3; i++){
+  for(var j = 0; j < 3; j++){
+    board[i].push(row[i].cells[j]);
+  }
+};
 
 for(var i = 0; i < 3; i++){
   for(var j = 0; j < 3; j++){
@@ -11,16 +16,8 @@ for(var i = 0; i < 3; i++){
   }
 };
 
+console.log(columns);
 
-var board = [];
-for(var i = 0; i < row.lenght; i++){
-  for(var j = 0; j < row.lenght; j++){
-    board
-  }
-  
-}
-
-var result = document.getElementById('result');
 
 function changeText(id){
   if(id.innerText === ""){
@@ -61,16 +58,16 @@ function isInnerTextO(value){
 }
 
 function checkRows(){
-  var rows = [row1, row2, row3]
-  for(var i = 0; i < rows.length; i++){
+ 
+  for(var i = 0; i < 3; i++){
     
-    if(Array.prototype.every.call(rows[i], isInnerTextX)){
+    if(Array.prototype.every.call(board[i], isInnerTextX)){
       alert("x wins");
       location.reload();
       
     }
     
-    if(Array.prototype.every.call(rows[i], isInnerTextO)){
+    if(Array.prototype.every.call(board[i], isInnerTextO)){
       alert("o wins");
       location.reload();
       
@@ -80,27 +77,27 @@ function checkRows(){
 }
 
 function checkMajorDiagonal(){
-  if( isInnerTextO(row1[0]) && isInnerTextO(row2[1]) && isInnerTextO(row3[2]) ){
+  if( isInnerTextO(board[0][0]) && isInnerTextO(board[1][1]) && isInnerTextO(board[2][2]) ){
    alert("o wins");
    location.reload();
    
- }
+  }
  
- if( isInnerTextX(row1[0]) && isInnerTextX(row2[1]) && isInnerTextX(row3[2]) ){
+  if( isInnerTextX(board[0][0]) && isInnerTextX(board[1][1]) && isInnerTextX(board[2][2]) ){
    alert("x wins");
    location.reload();
- }
+  }
  
 }
 
 function checkMinorDiagonal(){
-  if( isInnerTextO(row1[2]) && isInnerTextO(row2[1]) && isInnerTextO(row3[0]) ){
+  if( isInnerTextO(board[0][2]) && isInnerTextO(board[1][1]) && isInnerTextO(board[2][0]) ){
     alert("o wins");
     location.reload();
   
   }
 
-  if( isInnerTextX(row1[2]) && isInnerTextX(row2[1]) && isInnerTextX(row3[0]) ){
+  if( isInnerTextX(board[0][2]) && isInnerTextX(board[1][1]) && isInnerTextX(board[2][0]) ){
     alert("x wins");
     location.reload();
   }
